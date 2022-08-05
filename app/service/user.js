@@ -30,12 +30,10 @@ class UserService extends Service {
   async editUserInfo(params) {
     const { ctx, app } = this;
     try {
-      console.log('是否一样')
       let result = await app.mysql.update('users', {
         id: 0,
         ...params
       });
-      console.log(result,'!!!')
       return result;
     } catch (error) {
       return null;

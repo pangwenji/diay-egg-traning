@@ -132,6 +132,7 @@ class UserController extends Controller {
         return
       }
 
+      delete userInfo['password']
       const result = await ctx.service.user.modifyPass({
         ...userInfo,
         password: new_pass,
@@ -148,7 +149,6 @@ class UserController extends Controller {
     const { ctx, app } = this;
     const { token } = ctx.request.body
     const decode = await app.jwt.verify(token, app.config.jwt.secret);
-    console.log('decode', decode)
     ctx.body = 'success gays'
   }
 }
